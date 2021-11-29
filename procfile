@@ -1,0 +1,1 @@
+web: gunicorn churchshope.wsgi --log-file -
