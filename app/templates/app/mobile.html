@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="d-flex">
+  <div class="w-25">
+   <a href="{% url 'mobile' %}"><input class='w-100 text-start' type="button" value="All Mobiles"><br></a>
+   <a href="{% url 'mobiledata' 'samsung' %}"><input class='w-100 text-start' type="button" value="samsung"></a><br>
+   <a href="{% url 'mobiledata' 'tcl' %}"><input class='w-100 text-start' type="button" value="tcl"></a><br>
+   <a href="{% url 'mobiledata' 'apple' %}"><input class='w-100 text-start' type="button" value="apple"></a><br>
+   <a href="{% url 'mobiledata' 'Redmi' %}"><input class='w-100 text-start' type="button" value="Redmi"></a><br>
+   <a href="{% url 'mobiledata' 'poco' %}"><input class='w-100 text-start' type="button" value="poco"></a><br>
+   <a href="{% url 'mobiledata' 'below' %}"><input class='w-100 text-start' type="button" value="below 35000"></a><br>
+   <a href="{% url 'mobiledata' 'above' %}"><input class='w-100 text-start' type="button" value="above 35000"></a><br>
+  </div>
+  <div class="container mx-5">
+      <div class="row">
+      
+  {% for m in mobiles %}
+  <div class="col-lg-4">
+      <img src="{{m.product_image.url}}" alt="" class='img_size'><br>
+      <h6>{{m.title}}</h6>
+
+  
+   <h6><strong>Rs. {{m.discounted_price}}</strong><small class="fw-light text-decoration-line-through"> Rs. {{m.selling_price}}</small></h6> <br>
+
+   
+  </div>
+  {% endfor %}
+      </div>
+      </div>
+
+ </div>
+</div>
+{% endblock main-content %}

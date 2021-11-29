@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="d-flex">
+  <div class="w-25">
+   <a href="{% url 'topwear' %}"><input class='w-100 text-start' type="button" value="All Top Wears"><br></a>
+   <a href="{% url 'topweardata' 'stelee' %}"><input class='w-100 text-start' type="button" value="stelee"></a><br>
+   <a href="{% url 'topweardata' 'steele' %}"><input class='w-100 text-start' type="button" value="steele"></a><br>
+   <a href="{% url 'topweardata' 'avenue' %}"><input class='w-100 text-start' type="button" value="avenue"></a><br>
+   <a href="{% url 'topweardata' 'church' %}"><input class='w-100 text-start' type="button" value="church"></a><br>
+   <a href="{% url 'topweardata' 'priestly' %}"><input class='w-100 text-start' type="button" value="priestly"></a><br>
+   <a href="{% url 'topweardata' 'below' %}"><input class='w-100 text-start' type="button" value="below 700"></a><br>
+   <a href="{% url 'topweardata' 'above' %}"><input class='w-100 text-start' type="button" value="above 700"></a><br>
+  </div>
+  <div class="container mx-5">
+      <div class="row">
+      
+  {% for t in topwears %}
+  <div class="col-lg-4">
+      <img src="{{t.product_image.url}}" alt="" class='img_size'><br>
+      <h6>{{t.title}}</h6>
+
+  
+   <h6><strong>Rs. {{t.discounted_price}}</strong><small class="fw-light text-decoration-line-through"> Rs. {{t.selling_price}}</small></h6> <br>
+
+   
+  </div>
+  {% endfor %}
+      </div>
+      </div>
+
+ </div>
+</div>
+{% endblock main-content %}

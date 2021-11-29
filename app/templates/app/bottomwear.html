@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="d-flex">
+  <div class="w-25">
+   <a href="{% url 'bottomwear' %}"><input class='w-100 text-start' type="button" value="All Bottom Wears"><br></a>
+   <a href="{% url 'bottomweardata' 'park' %}"><input class='w-100 text-start' type="button" value="park"></a><br>
+   <a href="{% url 'bottomweardata' 'juke' %}"><input class='w-100 text-start' type="button" value="juke"></a><br>
+   <a href="{% url 'bottomweardata' 'church' %}"><input class='w-100 text-start' type="button" value="church"></a><br>
+   <a href="{% url 'bottomweardata' 'standard' %}"><input class='w-100 text-start' type="button" value="standard"></a><br>
+   <a href="{% url 'bottomweardata' 'good' %}"><input class='w-100 text-start' type="button" value="good"></a><br>
+   <a href="{% url 'bottomweardata' 'Elegant' %}"><input class='w-100 text-start' type="button" value="Elegant"></a><br>
+   <a href="{% url 'bottomweardata' 'new' %}"><input class='w-100 text-start' type="button" value="new"></a><br>
+   <a href="{% url 'bottomweardata' 'below' %}"><input class='w-100 text-start' type="button" value="below 1000"></a><br>
+   <a href="{% url 'bottomweardata' 'above' %}"><input class='w-100 text-start' type="button" value="above 1000"></a><br>
+  </div>
+  <div class="container mx-5">
+      <div class="row">
+      
+  {% for b in bottomwears %}
+  <div class="col-lg-4">
+      <img src="{{b.product_image.url}}" alt="" class='img_size'><br>
+      <h6>{{b.title}}</h6>
+
+  
+   <h6><strong>Rs. {{b.discounted_price}}</strong><small class="fw-light text-decoration-line-through"> Rs. {{b.selling_price}}</small></h6> <br>
+
+   
+  </div>
+  {% endfor %}
+      </div>
+      </div>
+
+ </div>
+</div>
+{% endblock main-content %}
